@@ -21,6 +21,6 @@
 > * <a href='https://nextjs.org/docs/advanced-features/module-path-aliases'>Next js</a>
 > * <a href='https://tailwindcss.com/'>Tailwind CSS</a>
 
-### Dependencia 
+### Dependência 
 > * <a href='https://pokenode-ts-docs-gabb-c.vercel.app/'>pokenode-ts</a>
 > * <a href='https://heroicons.com/'>Heroicons</a>
