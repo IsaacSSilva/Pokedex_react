@@ -13,7 +13,10 @@ export default function Home() {
   }
   return (
     <>
-      <Seo />
+      <Seo
+        title='pokedex
+      '
+      />
 
       <button onClick={api}>api</button>
     </>
