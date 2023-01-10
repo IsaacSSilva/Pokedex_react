@@ -1,11 +1,11 @@
-import { Seo } from 'components/Seo'
-import { Iput } from 'components/input'
+import { App } from '../components/App'
+import { Seo } from '../components/Seo'
 
 export default function Home() {
   return (
     <>
-      <Seo title='pokedex' />
-      <Iput />
+      <Seo />
+      <App />
     </>
   )
 }
