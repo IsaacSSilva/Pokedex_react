@@ -1,14 +1,16 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import axios from 'axios'
+import { ImgPokemon } from './ImgPokemon'
+import { IPoke } from '../types/interface'
 
 export const App = () => {
-  const [poke, setPoke] = useState()
-  const [img, setimg] = useState({})
-  const api = 'https://pokeapi.co/api/v2/pokemon/' + poke
+  const [idPoke, setIdPoke] = useState()
+  const [pokemon, setPokemon] = useState<IPoke>({ back: '', front: '' })
+  const api = 'https://pokeapi.co/api/v2/pokemon/' + idPoke
 
   const pokeEvent = () => {
     axios.get(api).then(api => {
-      setimg({
+      setPokemon({
         back: api.data.sprites.back_default,
         front: api.data.sprites.front_default
       })
@@ -18,14 +20,16 @@ export const App = () => {
   return (
     <>
       <input
-        onChange={e => {
-          setPoke(e.target.value)
+        onChange={(e: any) => {
+          setIdPoke(e.target.value)
         }}
         type='text'
       />
 
-      <img src={img.front} alt='' />
-      <img src={img.back} alt='' />
+      <div className='flex'>
+        <ImgPokemon loader={pokemon.front} srcPokemon={pokemon} />
+        <ImgPokemon loader={pokemon.back} srcPokemon={pokemon} />
+      </div>
 
       <button onClick={pokeEvent}>api</button>
     </>
