@@ -1,11 +1,15 @@
 import { App } from '../components/App'
-import { Seo } from '../components/Seo'
+import { Seo } from '../components/common/Seo'
+import { PokedexList } from '../components/pokeList'
 
 export default function Home() {
   return (
     <>
       <Seo />
-      <App />
+      <main className='w-full bg-sky-400'>
+        {/* <App /> */}
+        <PokedexList />
+      </main>
     </>
   )
 }
