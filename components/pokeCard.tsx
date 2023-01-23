@@ -1,4 +1,4 @@
-import { PokeImg } from './pokeImg'
+import { PokeImg } from './common/pokeImg'
 
 export const CardPokemon = ({ key, img, name, id, pokeType }: any) => {
   return (

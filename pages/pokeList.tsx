@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { useState, useEffect } from 'react'
-import { CardPokemon } from './common/pokeCard'
+import { CardPokemon } from '../components/pokeCard'
 
 export const PokedexList = () => {
   let e = 50
@@ -40,7 +40,7 @@ export const PokedexList = () => {
       <>
         {/* <input type='text' /> */}
 
-        <div className='w-full flex flex-row flex-wrap py-10 px-1 md:p-5  justify-center items-center gap-5'>
+        <div className='max-w-3xl flex flex-row flex-wrap m-auto py-10 px-1 md:p-5  justify-center items-center gap-5'>
           {idPoke &&
             idPoke.map(poke => (
               <CardPokemon
@@ -63,7 +63,7 @@ export const PokedexList = () => {
           <button
             className='px-4 py-2 bg-yellow-300 border border-white rounded-lg'
             onClick={() => {
-              e = addPoke + 25
+              e = e + 25
               e === 1250 ? setAddPoke(1279) : setAddPoke(e)
               console.log(e)
             }}
@@ -71,10 +71,6 @@ export const PokedexList = () => {
             Mais Pokemons...
           </button>
         </div>
-
-        <footer className='h-full flex justify-center p-14 text-lg font-mono font-semibold'>
-          <p>em desenvolvimento 🚧 por Isaac S. Silva...</p>
-        </footer>
       </>
     </>
   )

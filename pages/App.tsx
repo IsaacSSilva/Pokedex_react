@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import axios from 'axios'
-import { PokeImg } from './common/pokeImg'
+import { PokeImg } from '../components/common/pokeImg'
 import { IPoke } from '../types/interface'
 
 export const App = () => {
