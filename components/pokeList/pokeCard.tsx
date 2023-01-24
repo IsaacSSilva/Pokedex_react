@@ -1,15 +1,17 @@
-import { PokeImg } from './common/pokeImg'
+import { PokeImg } from '../common/pokeImg'
 
-export const CardPokemon = ({ key, img, name, id, pokeType }: any) => {
+export const CardPokemon = ({ img, name, id, numero, pokeType }: any) => {
   return (
     <>
       <div
         className='w-40 h-40 z-10 flex flex-col justify-center items-center bg-white bg-opacity-60  rounded-md border border-slate-800'
-        key={key}
-        title={`${id}, ${name}`}
+        id={id}
+        title={`${numero}, ${name}`}
       >
         <div className='w-full flex flex-row px-1 justify-between'>
-          <span className='font-mono text-base relative opacity-40'>{id}</span>
+          <span className='font-mono text-base relative opacity-40'>
+            {numero}
+          </span>
           <span className='font-mono text-sm relative opacity-40'>
             {pokeType}
           </span>

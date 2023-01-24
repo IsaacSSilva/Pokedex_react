@@ -1,6 +1,6 @@
-import { App } from './App'
+import { App } from '../components/App'
 import { Seo } from '../components/common/Seo'
-import { PokedexList } from './pokeList'
+import { PokedexList } from '../components/pokeList/pokeList'
 import { Home } from '../components/Home'
 
 export default function Index() {

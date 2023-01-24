@@ -1,11 +1,9 @@
 import axios from 'axios'
 import { useState, useEffect } from 'react'
-import { CardPokemon } from '../components/pokeCard'
+import { CardPokemon } from './pokeCard'
 
 export const PokedexList = () => {
-  let e = 50
-
-  const [addPoke, setAddPoke] = useState(e)
+  const [addPoke, setAddPoke] = useState<number>(50)
   const [idPoke, setIdPoke] = useState([
     {
       data: {
@@ -23,16 +21,16 @@ export const PokedexList = () => {
     getPoke()
   }, [addPoke])
 
-  const getPoke = () => {
+  const getPoke = async () => {
     var endpoints = []
 
     for (var i = 1; i <= addPoke; ++i) {
       endpoints.push(`https://pokeapi.co/api/v2/pokemon/${i}/`)
     }
 
-    axios
+    await axios
       .all(endpoints.map(endpoint => axios.get(endpoint)))
-      .then((poke: any) => setIdPoke(poke))
+      .then((poke: any) => setIdPoke([...poke]))
   }
 
   return (
@@ -42,12 +40,13 @@ export const PokedexList = () => {
 
         <div className='max-w-3xl flex flex-row flex-wrap m-auto py-10 px-1 md:p-5  justify-center items-center gap-5'>
           {idPoke &&
-            idPoke.map(poke => (
+            idPoke.map((poke, key) => (
               <CardPokemon
-                key={poke.data.id}
+                key={key}
+                id={poke.data.id}
                 img={poke.data.sprites.front_default}
                 name={poke.data.name}
-                id={
+                numero={
                   poke.data.id.toString().length === 1
                     ? `#00${poke.data.id}`
                     : poke.data.id.toString().length === 2
@@ -63,9 +62,8 @@ export const PokedexList = () => {
           <button
             className='px-4 py-2 bg-yellow-300 border border-white rounded-lg'
             onClick={() => {
-              e = e + 25
-              e === 1250 ? setAddPoke(1279) : setAddPoke(e)
-              console.log(e)
+              setAddPoke(addPoke + 25)
+              console.log(addPoke)
             }}
           >
             Mais Pokemons...
