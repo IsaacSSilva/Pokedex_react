@@ -4,6 +4,8 @@ import { CardPokemon } from './pokeCard'
 
 export const PokedexList = () => {
   const [addPoke, setAddPoke] = useState<number>(50)
+  const [valueNumero, setValuNumero] = useState<string | undefined>()
+  const [valueName, setValueName] = useState<string | undefined>()
   const [idPoke, setIdPoke] = useState([
     {
       data: {
@@ -35,12 +37,65 @@ export const PokedexList = () => {
 
   return (
     <>
-      <>
-        {/* <input type='text' /> */}
+      <div className='flex m-auto justify-center items-center gap-7'>
+        <input
+          placeholder='nome'
+          type='text'
+          onChange={e => {
+            setValueName(e.target.value.toLowerCase())
+          }}
+        />
+        <input
+          placeholder='numero'
+          type='text'
+          onChange={e => {
+            setValuNumero(e.target.value)
+          }}
+        />
+      </div>
 
-        <div className='max-w-3xl flex flex-row flex-wrap m-auto py-10 px-1 md:p-5  justify-center items-center gap-5'>
-          {idPoke &&
-            idPoke.map((poke, key) => (
+      <div className='max-w-3xl flex flex-row flex-wrap m-auto py-10 px-1 md:p-5  justify-center items-center gap-5'>
+        {valueName
+          ? idPoke
+              .filter(poke => poke.data.name.includes(valueName))
+
+              .map((poke, key) => (
+                <CardPokemon
+                  key={key}
+                  id={poke.data.id}
+                  img={poke.data.sprites.front_default}
+                  name={poke.data.name}
+                  numero={
+                    poke.data.id.toString().length === 1
+                      ? `#00${poke.data.id}`
+                      : poke.data.id.toString().length === 2
+                      ? `#0${poke.data.id}`
+                      : `#${poke.data.id}`
+                  }
+                  pokeType={poke.data.types[0].type.name}
+                />
+              ))
+          : valueNumero
+          ? idPoke
+              .filter(poke => poke.data.name.includes(valueName))
+              .filter(poke => poke.data.id == valueNumero)
+              .map((poke, key) => (
+                <CardPokemon
+                  key={key}
+                  id={poke.data.id}
+                  img={poke.data.sprites.front_default}
+                  name={poke.data.name}
+                  numero={
+                    poke.data.id.toString().length === 1
+                      ? `#00${poke.data.id}`
+                      : poke.data.id.toString().length === 2
+                      ? `#0${poke.data.id}`
+                      : `#${poke.data.id}`
+                  }
+                  pokeType={poke.data.types[0].type.name}
+                />
+              ))
+          : idPoke.map((poke, key) => (
               <CardPokemon
                 key={key}
                 id={poke.data.id}
@@ -56,20 +111,19 @@ export const PokedexList = () => {
                 pokeType={poke.data.types[0].type.name}
               />
             ))}
-        </div>
+      </div>
 
-        <div className='flex justify-center items-center'>
-          <button
-            className='px-4 py-2 bg-yellow-300 border border-white rounded-lg'
-            onClick={() => {
-              setAddPoke(addPoke + 25)
-              console.log(addPoke)
-            }}
-          >
-            Mais Pokemons...
-          </button>
-        </div>
-      </>
+      <div className='flex justify-center items-center'>
+        <button
+          className='px-4 py-2 bg-yellow-300 border border-white rounded-lg'
+          onClick={() => {
+            setAddPoke(addPoke + 25)
+            console.log(addPoke)
+          }}
+        >
+          Mais Pokemons...
+        </button>
+      </div>
     </>
   )
 }
