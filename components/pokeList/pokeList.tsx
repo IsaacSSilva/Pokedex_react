@@ -4,8 +4,8 @@ import { CardPokemon } from './pokeCard'
 
 export const PokedexList = () => {
   const [addPoke, setAddPoke] = useState<number>(50)
-  const [valueNumero, setValuNumero] = useState<string | undefined>()
-  const [valueName, setValueName] = useState<string | undefined>()
+  const [valueNumero, setValuNumero] = useState()
+  const [valueName, setValueName] = useState<any>()
   const [idPoke, setIdPoke] = useState([
     {
       data: {
