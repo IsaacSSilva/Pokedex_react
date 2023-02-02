@@ -45,13 +45,6 @@ export const PokedexList = () => {
             setValueName(e.target.value.toLowerCase())
           }}
         />
-        <input
-          placeholder='numero'
-          type='text'
-          onChange={e => {
-            setValuNumero(e.target.value)
-          }}
-        />
       </div>
 
       <div className='max-w-3xl flex flex-row flex-wrap m-auto py-10 px-1 md:p-5  justify-center items-center gap-5'>
@@ -65,33 +58,7 @@ export const PokedexList = () => {
                   id={poke.data.id}
                   img={poke.data.sprites.front_default}
                   name={poke.data.name}
-                  numero={
-                    poke.data.id.toString().length === 1
-                      ? `#00${poke.data.id}`
-                      : poke.data.id.toString().length === 2
-                      ? `#0${poke.data.id}`
-                      : `#${poke.data.id}`
-                  }
-                  pokeType={poke.data.types[0].type.name}
-                />
-              ))
-          : valueNumero
-          ? idPoke
-              .filter(poke => poke.data.name.includes(valueName))
-              .filter(poke => poke.data.id == valueNumero)
-              .map((poke, key) => (
-                <CardPokemon
-                  key={key}
-                  id={poke.data.id}
-                  img={poke.data.sprites.front_default}
-                  name={poke.data.name}
-                  numero={
-                    poke.data.id.toString().length === 1
-                      ? `#00${poke.data.id}`
-                      : poke.data.id.toString().length === 2
-                      ? `#0${poke.data.id}`
-                      : `#${poke.data.id}`
-                  }
+                  numero={poke.data.id.toString()}
                   pokeType={poke.data.types[0].type.name}
                 />
               ))
@@ -101,13 +68,7 @@ export const PokedexList = () => {
                 id={poke.data.id}
                 img={poke.data.sprites.front_default}
                 name={poke.data.name}
-                numero={
-                  poke.data.id.toString().length === 1
-                    ? `#00${poke.data.id}`
-                    : poke.data.id.toString().length === 2
-                    ? `#0${poke.data.id}`
-                    : `#${poke.data.id}`
-                }
+                numero={poke.data.id.toString()}
                 pokeType={poke.data.types[0].type.name}
               />
             ))}
