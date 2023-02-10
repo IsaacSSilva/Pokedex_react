@@ -6,7 +6,6 @@ export const PokedexList = () => {
   const [addPoke, setAddPoke] = useState<number>(150)
   const [pokeLimited, setPokeLimited] = useState<number>(50)
   const [valueName, setValueName] = useState<any>()
-  const [valueNumber, setValueNumber] = useState<any>()
   const [idPoke, setIdPoke] = useState([
     {
       data: {
@@ -36,57 +35,32 @@ export const PokedexList = () => {
 
   return (
     <>
-      <div className='m-auto flex flex-col justify-center items-center gap-2'>
+      <div className='m-auto flex flex-row justify-center items-center gap-2'>
         <input
-          className='px-2 py-1 rounded-sm bg-opacity-75 bg-white focus:bg-opacity-100'
-          placeholder='Nome'
+          className='px-2 py-1 rounded-sm bg-opacity-75 bg-white focus:bg-opacity-100 outline-none'
+          placeholder='Pikachu ou #25'
           type='text'
-          onChange={e => {
-            setValueName(e.target.value.toLowerCase())
+          onChange={(e: any) => {
+            let valor =
+              e.target.value.substr(0, 1) == '#'
+                ? parseInt(e.target.value.replace(/[^0-9]/g, ''))
+                : e.target.value
+            setValueName(valor)
           }}
         />
+        {/* <div>
 
-        <input
-          className='px-2 py-1 rounded-sm bg-opacity-75 bg-white focus:bg-opacity-100'
-          placeholder='Numero'
-          type='text'
-          onChange={e => {
-            setValueNumber(e.target.value)
-          }}
-        />
+        </div> */}
       </div>
 
       <div className='flex flex-row flex-wrap m-auto my-10 mx-1 md:m-5  justify-center items-center gap-5'>
-        {valueNumber
+        {valueName
           ? idPoke
-              .filter(poke => poke.data.id == valueNumber)
-              .map((poke, key) => (
-                <CardPokemon
-                  key={key}
-                  id={poke.data.id}
-                  img={poke.data.sprites.front_default}
-                  name={poke.data.name}
-                  numero={poke.data.id.toString()}
-                  pokeType={poke.data.types[0].type.name}
-                />
-              ))
-          : valueName
-          ? idPoke
-              .filter(poke => poke.data.name.includes(valueName))
-              .map((poke, key) => (
-                <CardPokemon
-                  key={key}
-                  id={poke.data.id}
-                  img={poke.data.sprites.front_default}
-                  name={poke.data.name}
-                  numero={poke.data.id.toString()}
-                  pokeType={poke.data.types[0].type.name}
-                />
-              ))
-          : valueName || valueNumber
-          ? idPoke
-              .filter(poke => poke.data.name.includes(valueName))
-              .filter(poke => poke.data.id == valueNumber)
+              .filter(poke =>
+                typeof valueName === 'string'
+                  ? poke.data.name.includes(valueName)
+                  : poke.data.id == valueName
+              )
               .map((poke, key) => (
                 <CardPokemon
                   key={key}

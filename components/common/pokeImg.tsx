@@ -10,7 +10,7 @@ export const PokeImg = ({ loader, srcPokemon, alt }: any) => {
       {loader && (
         <Image
           //bg-opacity-10 bg-white
-          className='rounded-full mx-2'
+          className=' mx-2'
           loader={myLoader}
           src={`${srcPokemon}`}
           width={100}
