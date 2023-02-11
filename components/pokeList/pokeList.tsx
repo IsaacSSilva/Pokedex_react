@@ -22,9 +22,13 @@ export const PokedexList = () => {
   }, [addPoke])
 
   const getPoke = async () => {
-    var endpoints = []
+    let endpoints: string[] = []
 
-    for (var i = 1; i <= addPoke; ++i) {
+    for (
+      let i = endpoints.length === 0 ? 1 : endpoints.length;
+      i <= addPoke;
+      ++i
+    ) {
       endpoints.push(`https://pokeapi.co/api/v2/pokemon/${i}/`)
     }
 
@@ -44,13 +48,11 @@ export const PokedexList = () => {
             let valor =
               e.target.value.substr(0, 1) == '#'
                 ? parseInt(e.target.value.replace(/[^0-9]/g, ''))
-                : e.target.value
+                : e.target.value.toLowerCase()
+
             setValueName(valor)
           }}
         />
-        {/* <div>
-
-        </div> */}
       </div>
 
       <div className='flex flex-row flex-wrap m-auto my-10 mx-1 md:m-5  justify-center items-center gap-5'>
@@ -89,7 +91,7 @@ export const PokedexList = () => {
         <button
           className='px-4 py-2 bg-yellow-300 border border-white rounded-lg'
           onClick={() => {
-            pokeLimited >= 150 ? setAddPoke(addPoke + 25) : ''
+            pokeLimited >= addPoke ? setAddPoke(addPoke + 25) : ''
             setPokeLimited(pokeLimited + 25)
           }}
         >

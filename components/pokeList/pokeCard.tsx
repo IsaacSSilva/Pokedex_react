@@ -9,7 +9,7 @@ export const CardPokemon = ({ img, name, id, numero, pokeType }: any) => {
       : `#${numero}`
 
   let pokeCardOff = []
-  for (var i = 1; i <= 25; ++i) {
+  for (var i = 1; i <= 20; ++i) {
     pokeCardOff.push(
       <div className='w-40 h-40 z-10 flex flex-col justify-center items-center bg-white bg-opacity-60  rounded-md border border-slate-800 transform transition-all animate-pulse'>
         <div className='w-full flex flex-row px-1 justify-between'>
@@ -25,7 +25,7 @@ export const CardPokemon = ({ img, name, id, numero, pokeType }: any) => {
     <>
       {id ? (
         <div
-          className='w-40 h-40 z-10 flex flex-col justify-center items-center bg-white bg-opacity-60  rounded-md border border-slate-800 transition'
+          className='w-40 h-40 z-10 flex flex-col justify-center items-center bg-white bg-opacity-60  rounded-md border border-slate-800'
           id={id}
           title={`${numeroPokemon}, ${name}`}
         >
