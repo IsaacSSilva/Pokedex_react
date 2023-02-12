@@ -17,21 +17,21 @@ export const PokedexList = () => {
     }
   ])
 
+  let endpoints: string[] = []
+
+  for (
+    let i = endpoints.length === 0 ? 1 : endpoints.length;
+    i <= addPoke;
+    ++i
+  ) {
+    endpoints.push(`https://pokeapi.co/api/v2/pokemon/${i}/`)
+  }
+
   useEffect(() => {
     getPoke()
   }, [addPoke])
 
   const getPoke = async () => {
-    let endpoints: string[] = []
-
-    for (
-      let i = endpoints.length === 0 ? 1 : endpoints.length;
-      i <= addPoke;
-      ++i
-    ) {
-      endpoints.push(`https://pokeapi.co/api/v2/pokemon/${i}/`)
-    }
-
     await axios
       .all(endpoints.map(endpoint => axios.get(endpoint)))
       .then((poke: any) => setIdPoke([...poke]))
@@ -39,7 +39,7 @@ export const PokedexList = () => {
 
   return (
     <>
-      <div className='m-auto flex flex-row justify-center items-center gap-2'>
+      <div className='m-auto flex flex-row justify-center items-center gap-2 img'>
         <input
           className='px-2 py-1 rounded-sm bg-opacity-75 bg-white focus:bg-opacity-100 outline-none'
           placeholder='Pikachu ou #25'
@@ -91,7 +91,7 @@ export const PokedexList = () => {
         <button
           className='px-4 py-2 bg-yellow-300 border border-white rounded-lg'
           onClick={() => {
-            pokeLimited >= addPoke ? setAddPoke(addPoke + 25) : ''
+            pokeLimited >= addPoke ? setAddPoke(addPoke + 50) : ''
             setPokeLimited(pokeLimited + 25)
           }}
         >
