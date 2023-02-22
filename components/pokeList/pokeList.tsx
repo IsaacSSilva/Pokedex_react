@@ -82,7 +82,7 @@ export const PokedexList = () => {
         </div>
       </div>
 
-      <div className='flex flex-row flex-wrap m-auto my-10 mx-1 md:m-5  justify-center items-center gap-5'>
+      <div className='flex flex-row flex-wrap m-auto my-10 mx-1 md:m-5  justify-center items-center gap-5 '>
         {valueName
           ? idPoke
               .filter(poke =>
