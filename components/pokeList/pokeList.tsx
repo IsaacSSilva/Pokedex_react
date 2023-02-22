@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { CardPokemon } from './pokeCard'
 import { Header } from '../Header'
 import { QuestionMarkCircleIcon } from '@heroicons/react/24/outline'
@@ -46,6 +46,35 @@ export const PokedexList = () => {
     setisActiveTheTips(!isActiveTheTips)
   }
 
+  const F = () => {
+    pokeLimited >= addPoke ? setAddPoke(addPoke + 50) : ''
+    setPokeLimited(pokeLimited + 25)
+  }
+
+  const observerRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const observe: any = new IntersectionObserver(entries => {
+      // console.log(entries)
+
+      if (entries[0].isIntersecting) {
+        pokeLimited >= addPoke ? setAddPoke(addPoke + 50) : ''
+        setPokeLimited(pokeLimited + 25)
+        console.log('loading')
+      }
+    })
+
+    if (observerRef.current) {
+      observe.observe(observerRef.current)
+    }
+
+    return () => {
+      if (observerRef.current) {
+        observe.disconnect(observerRef.current)
+      }
+    }
+  }, [pokeLimited, addPoke])
+
   return (
     <>
       <Header />
@@ -82,7 +111,7 @@ export const PokedexList = () => {
         </div>
       </div>
 
-      <div className='flex flex-row flex-wrap m-auto my-10 mx-1 md:m-5  justify-center items-center gap-5 '>
+      <ul className='flex flex-row flex-wrap m-auto my-10 mx-1 md:m-5  justify-center items-center gap-5 '>
         {valueName
           ? idPoke
               .filter(poke =>
@@ -112,18 +141,10 @@ export const PokedexList = () => {
                   pokeType={poke.data.types[0].type.name}
                 />
               ))}
-      </div>
+      </ul>
 
-      <div className='flex justify-center items-center'>
-        <button
-          className='px-4 py-2 bg-yellow-300 border border-white rounded-lg'
-          onClick={() => {
-            pokeLimited >= addPoke ? setAddPoke(addPoke + 50) : ''
-            setPokeLimited(pokeLimited + 25)
-          }}
-        >
-          Mais Pokemons...
-        </button>
+      <div className='bg-red-900' ref={observerRef} id='sentinelas'>
+        fhjgjhghjhj
       </div>
     </>
   )
