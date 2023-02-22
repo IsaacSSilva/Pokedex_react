@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { useState, useEffect } from 'react'
 import { CardPokemon } from './pokeCard'
+import { Header } from '../Header'
 
 export const PokedexList = () => {
   const [addPoke, setAddPoke] = useState<number>(150)
@@ -39,6 +40,7 @@ export const PokedexList = () => {
 
   return (
     <>
+      <Header />
       <div className='m-auto flex flex-row justify-center items-center gap-2 img'>
         <input
           className='px-2 py-1 rounded-sm bg-opacity-75 bg-white focus:bg-opacity-100 outline-none'
