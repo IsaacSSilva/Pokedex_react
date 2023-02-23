@@ -3,13 +3,12 @@ import { useState, useEffect, useRef } from 'react'
 import { CardPokemon } from './pokeCard'
 import { Header } from '../Header'
 import { QuestionMarkCircleIcon } from '@heroicons/react/24/outline'
+import Image from 'next/image'
 
 export const PokedexList = () => {
   const [addPoke, setAddPoke] = useState<number>(150)
   const [pokeLimited, setPokeLimited] = useState<number>(50)
   const [valueName, setValueName] = useState<any>()
-
-  // verification of existence in the poke list
   const [idPoke, setIdPoke] = useState([
     {
       data: {
@@ -20,6 +19,13 @@ export const PokedexList = () => {
       }
     }
   ])
+
+  const [isActiveTheTips, setIsActiveTheTips] = useState(false)
+  const onclickActive = () => {
+    setIsActiveTheTips(!isActiveTheTips)
+  }
+
+  const [isActiveLoading, setIsActiveLoading] = useState(false)
 
   const existenceInThePokeList = idPoke[0].data.id
 
@@ -35,6 +41,8 @@ export const PokedexList = () => {
 
   useEffect(() => {
     getPoke()
+
+    setIsActiveLoading(true)
   }, [addPoke])
 
   const getPoke = async () => {
@@ -44,11 +52,6 @@ export const PokedexList = () => {
   }
 
   let valorInputPokedex = ''
-
-  const [isActiveTheTips, setisActiveTheTips] = useState(false)
-  const onclickActive = () => {
-    setisActiveTheTips(!isActiveTheTips)
-  }
 
   const functionScrollInfinit = () => {
     pokeLimited >= addPoke ? setAddPoke(addPoke + 50) : ''
@@ -71,6 +74,7 @@ export const PokedexList = () => {
     return () => {
       if (observerRef.current) {
         observe.disconnect(observerRef.current)
+        setIsActiveLoading(false)
       }
     }
   }, [pokeLimited, addPoke, idPoke])
@@ -142,12 +146,28 @@ export const PokedexList = () => {
                   />
                 ))}
         </ul>
+
         {existenceInThePokeList ? (
           <div
-            className='bg-transparent'
+            className='w-full flex justify-center items-center bg-transparent'
             ref={observerRef}
             id='sentinelas'
-          ></div>
+          >
+            {isActiveLoading ? (
+              <div className='bg-transparent animate-pulse'>
+                <Image
+                  className='md:w-12 w-6'
+                  src='/Pokeboll.png'
+                  alt='loading'
+                  width={50}
+                  height={50}
+                  unoptimized
+                />
+              </div>
+            ) : (
+              ''
+            )}
+          </div>
         ) : (
           ''
         )}
