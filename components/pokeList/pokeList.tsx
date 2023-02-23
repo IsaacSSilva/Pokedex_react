@@ -156,7 +156,6 @@ export const PokedexList = () => {
             {isActiveLoading ? (
               <div className='bg-transparent animate-pulse'>
                 <Image
-                  className='md:w-12 w-6'
                   src='/Pokeboll.png'
                   alt='loading'
                   width={50}
