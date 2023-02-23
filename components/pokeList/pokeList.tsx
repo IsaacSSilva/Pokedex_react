@@ -8,6 +8,8 @@ export const PokedexList = () => {
   const [addPoke, setAddPoke] = useState<number>(150)
   const [pokeLimited, setPokeLimited] = useState<number>(50)
   const [valueName, setValueName] = useState<any>()
+
+  // verification of existence in the poke list
   const [idPoke, setIdPoke] = useState([
     {
       data: {
@@ -18,6 +20,8 @@ export const PokedexList = () => {
       }
     }
   ])
+
+  const existenceInThePokeList = idPoke[0].data.id
 
   let endpoints: string[] = []
 
@@ -46,7 +50,7 @@ export const PokedexList = () => {
     setisActiveTheTips(!isActiveTheTips)
   }
 
-  const F = () => {
+  const functionScrollInfinit = () => {
     pokeLimited >= addPoke ? setAddPoke(addPoke + 50) : ''
     setPokeLimited(pokeLimited + 25)
   }
@@ -55,12 +59,8 @@ export const PokedexList = () => {
 
   useEffect(() => {
     const observe: any = new IntersectionObserver(entries => {
-      // console.log(entries)
-
       if (entries[0].isIntersecting) {
-        pokeLimited >= addPoke ? setAddPoke(addPoke + 50) : ''
-        setPokeLimited(pokeLimited + 25)
-        console.log('loading')
+        functionScrollInfinit()
       }
     })
 
@@ -73,79 +73,85 @@ export const PokedexList = () => {
         observe.disconnect(observerRef.current)
       }
     }
-  }, [pokeLimited, addPoke])
+  }, [pokeLimited, addPoke, idPoke])
 
   return (
     <>
       <Header />
-      <div className='m-auto flex flex-row justify-center items-center gap-2 '>
-        <div className='p-2 flex flex-col gap-2 border-2 border-sky-800 rounded-md'>
-          <div className='flex flex-row '>
-            <input
-              className='px-4 py-1 z-0 -right-3 relative rounded-l-lg bg-opacity-75 bg-white focus:bg-opacity-100 outline-none'
-              placeholder='Pikachu ou #25'
-              type='text'
-              onChange={(e: any) => {
-                valorInputPokedex =
-                  e.target.value.substr(0, 1) == '#'
-                    ? parseInt(e.target.value.replace(/[^0-9]/g, ''))
-                    : e.target.value.toLowerCase()
+      <main>
+        <div className='m-auto flex flex-row justify-center items-center gap-2 '>
+          <div className='p-2 flex flex-col gap-2 border-2 border-sky-800 rounded-md'>
+            <div className='flex flex-row '>
+              <input
+                className='px-4 py-1 z-0 -right-3 relative rounded-l-lg bg-opacity-75 bg-white focus:bg-opacity-100 outline-none'
+                placeholder='Pikachu ou #25'
+                type='text'
+                onChange={(e: any) => {
+                  valorInputPokedex =
+                    e.target.value.substr(0, 1) == '#'
+                      ? parseInt(e.target.value.replace(/[^0-9]/g, ''))
+                      : e.target.value.toLowerCase()
 
-                setValueName(valorInputPokedex)
-              }}
-            />
-            <span onClick={onclickActive}>
-              <QuestionMarkCircleIcon className='w-8 z-20 right-1 relative bg-yellow-400 rounded-full' />
-            </span>
-          </div>
-          <div
-            aria-hidden={isActiveTheTips}
-            className='hidden text-center m-auto w-64 p-3 bg-blue-500 bg-opacity-95 rounded-l-3xl rounded-br-3xl text-white
+                  setValueName(valorInputPokedex)
+                }}
+              />
+              <span onClick={onclickActive}>
+                <QuestionMarkCircleIcon className='w-8 z-20 right-1 relative bg-yellow-400 rounded-full' />
+              </span>
+            </div>
+            <div
+              aria-hidden={isActiveTheTips}
+              className='hidden text-center m-auto w-64 p-3 bg-blue-500 bg-opacity-95 rounded-l-3xl rounded-br-3xl text-white
             aria-hidden:flex '
-          >
-            <p>
-              Caso queira fazer a busca pelo numero da Pokedex, Use{' '}
-              <strong> # </strong> antes da propria busca
-            </p>
+            >
+              <p>
+                Caso queira fazer a busca pelo numero da Pokedex, Use{' '}
+                <strong> # </strong> antes da propria busca
+              </p>
+            </div>
           </div>
         </div>
-      </div>
-
-      <ul className='flex flex-row flex-wrap m-auto my-10 mx-1 md:m-5  justify-center items-center gap-5 '>
-        {valueName
-          ? idPoke
-              .filter(poke =>
-                typeof valueName === 'string'
-                  ? poke.data.name.includes(valueName)
-                  : poke.data.id == valueName
-              )
-              .map((poke, key) => (
-                <CardPokemon
-                  key={key}
-                  id={poke.data.id}
-                  img={poke.data.sprites.front_default}
-                  name={poke.data.name}
-                  numero={poke.data.id.toString()}
-                  pokeType={poke.data.types[0].type.name}
-                />
-              ))
-          : idPoke
-              .slice(0, pokeLimited)
-              .map((poke, key) => (
-                <CardPokemon
-                  key={key}
-                  id={poke.data.id}
-                  img={poke.data.sprites.front_default}
-                  name={poke.data.name}
-                  numero={poke.data.id.toString()}
-                  pokeType={poke.data.types[0].type.name}
-                />
-              ))}
-      </ul>
-
-      <div className='bg-red-900' ref={observerRef} id='sentinelas'>
-        fhjgjhghjhj
-      </div>
+        <ul className='flex flex-row flex-wrap m-auto my-10 mx-1 md:m-5  justify-center items-center gap-5 '>
+          {valueName
+            ? idPoke
+                .filter(poke =>
+                  typeof valueName === 'string'
+                    ? poke.data.name.includes(valueName)
+                    : poke.data.id == valueName
+                )
+                .map((poke, key) => (
+                  <CardPokemon
+                    key={key}
+                    id={poke.data.id}
+                    img={poke.data.sprites.front_default}
+                    name={poke.data.name}
+                    numero={poke.data.id.toString()}
+                    pokeType={poke.data.types[0].type.name}
+                  />
+                ))
+            : idPoke
+                .slice(0, pokeLimited)
+                .map((poke, key) => (
+                  <CardPokemon
+                    key={key}
+                    id={poke.data.id}
+                    img={poke.data.sprites.front_default}
+                    name={poke.data.name}
+                    numero={poke.data.id.toString()}
+                    pokeType={poke.data.types[0].type.name}
+                  />
+                ))}
+        </ul>
+        {existenceInThePokeList ? (
+          <div
+            className='bg-transparent'
+            ref={observerRef}
+            id='sentinelas'
+          ></div>
+        ) : (
+          ''
+        )}
+      </main>
     </>
   )
 }

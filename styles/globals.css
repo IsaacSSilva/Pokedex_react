@@ -20,3 +20,9 @@
 *::-webkit-scrollbar-thumb {
   background-color: #545454ab;
 }
+
+/* ul {
+  -webkit-mask-image: linear-gradient(to bottom, black, transparent 99%);
+
+  mask-image: linear-gradient(to bottom, black, transparent 99%);
+} */
