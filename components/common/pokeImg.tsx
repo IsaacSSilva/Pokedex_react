@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-export const PokeImg = ({ loader, srcPokemon, alt }: any) => {
+export const PokeImg = ({ loader, srcPokemon, alt, width, height }: any) => {
   const myLoader = () => {
     return srcPokemon
   }
@@ -12,8 +12,8 @@ export const PokeImg = ({ loader, srcPokemon, alt }: any) => {
           className=' mx-2'
           loader={myLoader}
           src={srcPokemon}
-          width={100}
-          height={100}
+          width={width}
+          height={height}
           alt={alt}
         />
       )}

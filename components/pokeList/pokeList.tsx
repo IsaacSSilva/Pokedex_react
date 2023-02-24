@@ -4,6 +4,7 @@ import { CardPokemon } from './pokeCard'
 import { Header } from '../Header'
 import { QuestionMarkCircleIcon } from '@heroicons/react/24/outline'
 import Image from 'next/image'
+import { PokeImg } from '../common/pokeImg'
 
 export const PokedexList = () => {
   const [addPoke, setAddPoke] = useState<number>(150)
@@ -25,7 +26,7 @@ export const PokedexList = () => {
     setIsActiveTheTips(!isActiveTheTips)
   }
 
-  const [isActiveLoading, setIsActiveLoading] = useState(false)
+  const [isActiveLoading, setIsActiveLoading] = useState(true)
 
   const existenceInThePokeList = idPoke[0].data.id
 
@@ -154,13 +155,13 @@ export const PokedexList = () => {
             id='sentinelas'
           >
             {isActiveLoading ? (
-              <div className='bg-transparent animate-pulse'>
-                <Image
-                  src='/Pokeboll.png'
-                  alt='loading'
-                  width={50}
-                  height={50}
-                  unoptimized
+              <div className='w-14 bg-transparent animate-pulse'>
+                <PokeImg
+                  loader={'/Pokeboll.png'}
+                  srcPokemon={'/Pokeboll.png'}
+                  alt='load'
+                  width={40}
+                  height={40}
                 />
               </div>
             ) : (

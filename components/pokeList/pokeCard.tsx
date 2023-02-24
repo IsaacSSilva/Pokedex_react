@@ -47,7 +47,13 @@ export const CardPokemon = ({ img, name, id, numero, pokeType }: any) => {
               </span>
             </div>
 
-            <PokeImg loader={img} srcPokemon={img} alt={name} />
+            <PokeImg
+              loader={img}
+              srcPokemon={img}
+              alt={name}
+              width={100}
+              height={100}
+            />
             <div className='w-full h-full z-0 font-roboto capitalize font-semibold text-lg pl-3 flex items-center bg-white rounded-b-md'>
               <h4>{name}</h4>
             </div>
