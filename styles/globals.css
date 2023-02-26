@@ -21,8 +21,16 @@
   background-color: #545454ab;
 }
 
-/* ul {
-  -webkit-mask-image: linear-gradient(to bottom, black, transparent 99%);
+#banner {
+  -webkit-mask-image: linear-gradient(to bottom, black, transparent 80%);
 
-  mask-image: linear-gradient(to bottom, black, transparent 99%);
-} */
+  mask-image: linear-gradient(to bottom, black, transparent 80%);
+}
+
+@media (min-width: 1024px) {
+  #banner {
+    -webkit-mask-image: linear-gradient(to right, black, transparent 80%);
+
+    mask-image: linear-gradient(to right, black, transparent 80%);
+  }
+}
