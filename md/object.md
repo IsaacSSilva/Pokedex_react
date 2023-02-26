@@ -1,4 +1,4 @@
-# Objetivo
+<!-- # Objetivo
 
  ### interface 
 > * imputs de texto
@@ -23,4 +23,4 @@
 
 ### Dependência 
 > * <a href='https://pokenode-ts-docs-gabb-c.vercel.app/'>pokenode-ts</a>
-> * <a href='https://heroicons.com/'>Heroicons</a>
+> * <a href='https://heroicons.com/'>Heroicons</a> -->
