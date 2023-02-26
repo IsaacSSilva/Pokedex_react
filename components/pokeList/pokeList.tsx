@@ -3,7 +3,6 @@ import { useState, useEffect, useRef } from 'react'
 import { CardPokemon } from './pokeCard'
 import { Header } from '../Header'
 import { QuestionMarkCircleIcon } from '@heroicons/react/24/outline'
-import Image from 'next/image'
 import { PokeImg } from '../common/pokeImg'
 
 export const PokedexList = () => {
@@ -26,9 +25,9 @@ export const PokedexList = () => {
     setIsActiveTheTips(!isActiveTheTips)
   }
 
-  const [isActiveLoading, setIsActiveLoading] = useState(true)
+  const [isActiveLoading, setIsActiveLoading] = useState(false)
 
-  const existenceInThePokeList = idPoke[0].data.id
+  const existenceInThePokeList = typeof idPoke[0].data.id
 
   let endpoints: string[] = []
 
@@ -64,7 +63,7 @@ export const PokedexList = () => {
   useEffect(() => {
     const observe: any = new IntersectionObserver(entries => {
       if (entries[0].isIntersecting) {
-        functionScrollInfinit()
+        existenceInThePokeList === 'number' ? functionScrollInfinit() : []
       }
     })
 
@@ -82,9 +81,9 @@ export const PokedexList = () => {
 
   return (
     <>
-      <Header />
-      <main>
-        <div className='m-auto flex flex-row justify-center items-center gap-2 '>
+      <main className='h-full bg-sky-500'>
+        <Header />
+        <div className=' m-auto flex flex-row justify-center items-center gap-2 '>
           <div className='p-2 flex flex-col gap-2 border-2 border-sky-800 rounded-md'>
             <div className='flex flex-row '>
               <input
@@ -148,29 +147,25 @@ export const PokedexList = () => {
                 ))}
         </ul>
 
-        {existenceInThePokeList ? (
-          <div
-            className='w-full flex justify-center items-center bg-transparent'
-            ref={observerRef}
-            id='sentinelas'
-          >
-            {isActiveLoading ? (
-              <div className='w-14 bg-transparent animate-pulse'>
-                <PokeImg
-                  loader={'/Pokeboll.png'}
-                  srcPokemon={'/Pokeboll.png'}
-                  alt='load'
-                  width={40}
-                  height={40}
-                />
-              </div>
-            ) : (
-              ''
-            )}
-          </div>
-        ) : (
-          ''
-        )}
+        <div
+          className='w-full h-20 flex justify-center items-center bg-transparent'
+          ref={observerRef}
+          id='sentinelas'
+        >
+          {isActiveLoading ? (
+            <div className='w-14 bg-transparent animate-pulse'>
+              <PokeImg
+                loader={'/Pokeboll.png'}
+                srcPokemon={'/Pokeboll.png'}
+                alt='load'
+                width={40}
+                height={40}
+              />
+            </div>
+          ) : (
+            []
+          )}
+        </div>
       </main>
     </>
   )

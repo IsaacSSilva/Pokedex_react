@@ -5,9 +5,9 @@ const Pokedex = () => {
   return (
     <>
       <Seo title='PokeDex' />
-      <main className='min-h-screen h-full bg-sky-500'>
-        <PokedexList />
-      </main>
+      {/* <main className='min-h-screen h-full bg-sky-500'> */}
+      <PokedexList />
+      {/* </main> */}
     </>
   )
 }
