@@ -21,6 +21,18 @@
 >   * Pode ser pesquisado pelo nome do pokemon ou pelo numero na pokedex utilizando "#" antes do numero desejado
 > * Responsividade 📲
 
+###  **👽️ API**
+ 
+<div>
+
+<a href='https://pokeapi.co/'>
+
+* PokeAPI
+
+</a>
+ 
+</div>
+
 ###  **👩‍💻 Tech**
 
 </br>
