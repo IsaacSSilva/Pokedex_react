@@ -6,7 +6,7 @@
 # **iPokeDex**
 </div>
 <div align="center" >
-  A iPokeDex e a sua pokedex para relenbrar ade algum pokemon no estilo scroll Infinito
+Ola me chamo <strong>  iPokeDex </strong>, Sou uma pokedex para uma busca de algum pokemon no estilo instagram
 </div>
 </br>
 
