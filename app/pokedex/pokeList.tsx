@@ -1,9 +1,11 @@
+'use client'
+
 import axios from 'axios'
 import { useState, useEffect, useRef } from 'react'
 import { CardPokemon } from './pokeCard'
-import { Header } from '../Header'
+// import { Header } from './Header'
 import { QuestionMarkCircleIcon } from '@heroicons/react/24/outline'
-import { PokeImg } from '../common/pokeImg'
+import { PokeImg } from '../../app/pokedex/pokeImg'
 
 export const PokedexList = () => {
   const [addPoke, setAddPoke] = useState<number>(150)
@@ -81,8 +83,7 @@ export const PokedexList = () => {
 
   return (
     <>
-      <main className='h-full bg-sky-500'>
-        <Header />
+      <main className='h-full'>
         <div className=' m-auto flex flex-row justify-center items-center gap-2 '>
           <div className='p-2 flex flex-col gap-2 border-2 border-sky-800 rounded-md'>
             <div className='flex flex-row '>

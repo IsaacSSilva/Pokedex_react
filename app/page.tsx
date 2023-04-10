@@ -1,13 +1,16 @@
 import Link from 'next/link'
-import { Seo } from '../components/common/Seo'
 import Image from 'next/image'
-import Linkedin from '../src/assets/icons8-linkedin-circled.svg'
-import Github from '../src/assets/icons8-github.svg'
+
+// import Linkedin from 'app/assets/icons8-linkedin-circled.svg'
+// import Github from '../src/assets/icons8-github.svg'
+
+export const metadata = {
+  title: 'Home'
+}
 
 export default function Index() {
   return (
     <>
-      <Seo title='Home PokeDex' />
       <main className='w-screen h-screen flex lg:flex-row flex-col lg:items-end justify-end bg-sky-500 items-center'>
         <div id='banner' className='h-full w-full'>
           <Image
@@ -65,11 +68,11 @@ export default function Index() {
                   target='_blank'
                   href={'https://github.com/IsaacGSS/Pokedex_react'}
                 >
-                  <Image
+                  {/* <Image
                     className='transition-all duration-700 hover:w-11 w-10'
                     src={Github}
                     alt='Linkedin Icone'
-                  />
+                  /> */}
                 </Link>
               </li>
 
@@ -80,11 +83,11 @@ export default function Index() {
                     'https://www.linkedin.com/in/isaac-gabriel-sousa-silvadev/'
                   }
                 >
-                  <Image
+                  {/* <Image
                     className='transition-all duration-700 hover:w-11 w-10'
                     src={Linkedin}
                     alt='Linkedin Icone'
-                  />
+                  /> */}
                 </Link>
               </li>
 

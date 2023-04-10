@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import pokeIcon from '../src/assets/pokeicon.png'
+import pokeIcon from 'public/pokeicon.png'
 export const Header = () => {
   return (
     <header>
