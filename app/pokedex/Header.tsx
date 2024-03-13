@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import pokeIcon from 'public/pokeicon.png'
+const pokeIcon = '/pokeicon.png'
 import Pokedex from './page'
 export const Header = () => {
   return (
@@ -20,6 +20,8 @@ export const Header = () => {
 
       <Image
         src={pokeIcon}
+        width={128}
+        height={128}
         alt='icone pokemon'
         priority
         className='w-32 items-end'
