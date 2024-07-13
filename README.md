@@ -1,59 +1,36 @@
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+## Getting Started
 
-<div align="center" >
-<img src='public/Pokeboll.png' width='100'> 
+First, run the development server:
 
-# **iPokeDex**
-</div>
-<div align="center" >
-Ola me chamo <strong>  iPokeDex </strong>, Sou uma pokedex para uma busca de algum pokemon no estilo instagram
-</div>
-</br>
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
 
-## 📜 Status
-> Status: in development aid
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-## 💻 Funcionalidades
+This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-> * Gerar e carregar os primerios 50 pokemon e ao scrollar ira ser carregando
-> * Pode ser pesquisado os pokemons pela sua barra de pesquisa
->   * Pode ser pesquisado pelo nome do pokemon ou pelo numero na pokedex utilizando "#" antes do numero desejado
-> * Responsividade 📲
+## Learn More
 
-###  **👽️ API**
- 
-<div>
+To learn more about Next.js, take a look at the following resources:
 
-<a href='https://pokeapi.co/'>
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-* PokeAPI
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-</a>
- 
-</div>
+## Deploy on Vercel
 
-###  **👩‍💻 Tech**
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-</br>
-
-<div align="center" >
-
- <img src='md/img/icons8-react-80.png' width='40'> 
- <img src='md/img/icons8-typescript-80.png' width='40'> 
- <img src='md/img/Nextjs.svg' width='40'> 
- <img src='md/img/Tailwind.svg' width='40'> 
- <img src='md/img/heroicons.png' width='40'> 
-     
-      
-
-
-</div>
-
-</br>
-
-###  **Hospedagem**
-<div align="center">
-<img src='md/img/Vercel-logo-sq.png' width='40'> 
- 
-</div>
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.

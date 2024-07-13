@@ -1,27 +1,22 @@
-import './globals.css'
-import { Metadata } from 'next'
-import { Roboto } from 'next/font/google'
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import "./globals.css";
 
-const roboto = Roboto({
-  weight: '400',
-  subsets: ['latin'],
-  display: 'swap'
-})
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'IPokedex',
-  description:
-    'iPokeDex, Sou uma pokedex para uma busca de algum pokemon no estilo instagram'
-}
+  title: "Pokédex",
+  //description: "",
+};
 
 export default function RootLayout({
-  children
-}: {
-  children: React.ReactNode
-}) {
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
-    <html className={roboto.className} lang='pt-BR'>
-      <body>{children}</body>
+    <html lang="pt-BR">
+      <body className={inter.className}>{children}</body>
     </html>
-  )
+  );
 }
