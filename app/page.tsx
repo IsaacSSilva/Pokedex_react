@@ -19,11 +19,41 @@ export default function Home() {
           <form action="" className="">
 
             <input type="text" name="" id="" placeholder="Pikachu or 25" className="font-thin"/>
-            <button type="button">
-              buttao
-            </button>
 
           </form>
+        </div>
+
+        <div className="w-full h-full">
+
+          <div id="card"
+          className="flex flex-col justify-between items-center gap-2 w-28 h-36 border border-black rounded-md shadow-md shadow-zinc-950/20"
+          >
+            <div id="namber and type"
+            className="flex justify-between items-center w-full px-1
+            text-black/35 font-mono"
+            >
+              <span>#003</span>
+              <span>glass</span>
+            </div>
+
+            <div id="image">
+              <Image 
+              //className="w-28" 
+              src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/1.gif" 
+              alt="Venusaur" 
+              width={50}
+              height={50}
+              className="w-full h-full"
+              />              
+            </div>
+
+            <div
+              className="w-full text-left pl-2 pb-0.5 "
+            >
+              <span id="name">Venusaur</span>
+            </div>
+          </div>
+
         </div>
 
       </main>
