@@ -23,10 +23,11 @@ export default function Home() {
           </form>
         </div>
 
-        <div className="w-full h-full">
+        <div className="w-full h-full flex gap-4">
 
           <div id="card"
-          className="flex flex-col justify-between items-center gap-2 w-28 h-36 border border-black rounded-md shadow-md shadow-zinc-950/20"
+          className="flex flex-col justify-between items-center gap-2 w-28 h-36 m-auto 
+          border border-black rounded-md shadow-md shadow-zinc-950/20 overflow-hidden"
           >
             <div id="namber and type"
             className="flex justify-between items-center w-full px-1
@@ -36,19 +37,21 @@ export default function Home() {
               <span>glass</span>
             </div>
 
-            <div id="image">
+            <div id="image"
+            className="bg-cover"
+            >
               <Image 
               //className="w-28" 
-              src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/1.gif" 
+              src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/130.gif" 
               alt="Venusaur" 
-              width={50}
-              height={50}
-              className="w-full h-full"
+              width={100}
+              height={100}
+              className="max-w-[80px] h-full bg-cover"
               />              
             </div>
 
             <div
-              className="w-full text-left pl-2 pb-0.5 "
+              className="w-full text-left pl-2 pb-0.5 bg-slate-200 "
             >
               <span id="name">Venusaur</span>
             </div>
